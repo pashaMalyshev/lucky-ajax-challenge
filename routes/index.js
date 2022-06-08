@@ -19,15 +19,20 @@ router.get('/', (req, res) => {
 // TODO: изменить данный маршрутизатор с использованием AJAX
 router.post('/rolls', (req, res) => {
   const die = new Die(Number(req.body.sides));
-
-  const home = React.createElement(Home, {
-    ...req.app.locals,
-    die,
-    roll: die.roll(),
-  });
-  const html = ReactDOMServer.renderToStaticMarkup(home);
-  res.write('<!DOCTYPE html>');
-  res.end(html);
+  const roll = die.roll();
+  res.send(
+    `<div class="die">
+        <span class="roll">
+          ${roll}
+        </span>
+    </div>`);
+  // const home = React.createElement(Home, {
+  //   ...req.app.locals,
+  //   die,
+  //   roll: die.roll(),
+  // });
+  // const html = ReactDOMServer.renderToStaticMarkup(home);
+  // res.end(html);
   // console.log(home);
 });
 
