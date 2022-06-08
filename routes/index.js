@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
   const html = ReactDOMServer.renderToStaticMarkup(home);
   res.write('<!DOCTYPE html>');
   res.end(html);
+  // console.log(...req.app.locals);
 });
 
 // TODO: изменить данный маршрутизатор с использованием AJAX
@@ -27,6 +28,7 @@ router.post('/rolls', (req, res) => {
   const html = ReactDOMServer.renderToStaticMarkup(home);
   res.write('<!DOCTYPE html>');
   res.end(html);
+  // console.log(home);
 });
 
 module.exports = router;
